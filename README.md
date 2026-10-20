@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/logo.png" width="240" alt="ACE Robotics">
+<img src="assets/brand-header.svg" width="720" alt="ACE Robotics on the left and ACE-Brain on the right">
 
 # ACE-Brain-0.6: Scaling Spatial Grounding for Physical Foundation Models
 
