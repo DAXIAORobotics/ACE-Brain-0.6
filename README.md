@@ -1,23 +1,17 @@
 <div align="center">
 
-<img src="assets/logo.png" width="240" alt="ACE Robotics">
+<img src="assets/brand-header.svg" width="720" alt="ACE Robotics on the left and ACE-Brain on the right">
 
-# ACE-Brain-0.6
-
-### Scaling Spatial Grounding for Physical Foundation Models
-
-**A 9B vision-language model for identifying what to interact with—and where.**
+# ACE-Brain-0.6: Scaling Spatial Grounding for Physical Foundation Models
 
 <p>
-  <a href="#release-status"><img src="https://img.shields.io/badge/Paper-Pending-lightgrey" alt="Paper: pending"></a>
-  <a href="#release-status"><img src="https://img.shields.io/badge/Models-Pending-lightgrey" alt="Models: pending"></a>
-  <a href="#performance-highlights"><img src="https://img.shields.io/badge/Avg--7-75.41-3530ef" alt="Seven-benchmark average: 75.41"></a>
+  <a href="#citation"><img src="https://img.shields.io/badge/arXiv-Pending-lightgrey" alt="arXiv: pending"></a>
+  <a href="#news"><img src="https://img.shields.io/badge/Models-Pending-lightgrey" alt="Models: pending"></a>
+  <a href="assets/ACE_Brain_Grounding.pdf"><img src="https://img.shields.io/badge/Tech_Report-PDF-3530ef" alt="Tech Report: PDF"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="Repository license: MIT"></a>
 </p>
 
-**9B parameters · ~1.5M training samples · 7 public grounding benchmarks**
-
-[Introduction](#introduction) · [Method](#method-architecture) · [Results](#performance-highlights) · [Release Status](#release-status)
+[Introduction](#introduction) · [Method](#method-architecture) · [Results](#performance-highlights) · [Tech Report](assets/ACE_Brain_Grounding.pdf)
 
 </div>
 
@@ -33,8 +27,6 @@
 - [Method & Architecture](#method-architecture)
 - [Performance Highlights](#performance-highlights)
 - [Data Scaling](#data-scaling)
-- [Quick Start & Release Status](#release-status)
-- [Roadmap](#roadmap)
 - [Citation](#citation)
 - [Acknowledgements](#acknowledgements)
 - [Contributors](#contributors)
@@ -46,7 +38,7 @@
 ## 🚀 News
 
 - **ACE-Brain-0.6** introduces spatial grounding through diverse, verifiable supervision. Explore the model overview, annotation pipeline, and reported benchmark results below.
-- Paper, model weights, and inference code links are pending. See [release status](#release-status) for availability.
+- The [technical report (PDF)](assets/ACE_Brain_Grounding.pdf) is available. The arXiv link, model weights, and inference code links are pending.
 
 <a id="introduction"></a>
 ## 🧠 Introduction
@@ -96,19 +88,19 @@ Coordinates are integers normalized to **[0, 1000]** along each image axis. Free
 <a id="performance-highlights"></a>
 ## 📊 Performance Highlights
 
-The following results are reported in the ACE-Brain-0.6 manuscript under a shared evaluation protocol. Higher is better; bold marks the best score among the three models shown.
+The following results compare ACE-Brain-0.6 with GPT, Claude Opus, and Gemini models under the shared evaluation protocol in the [technical report](assets/ACE_Brain_Grounding.pdf). Higher is better; bold marks the best score among the models shown.
 
-| Benchmark | Qwen3.5-9B | GPT-6 Astra | ACE-Brain-0.6 |
-|:--|--:|--:|--:|
-| Where2Place | 72.00 | 71.10 | **81.44** |
-| PixMo-Count | **90.35** | 88.10 | 86.96 |
-| RoboSpatial | 53.46 | 69.55 | **76.56** |
-| RefSpatial | 57.76 | **80.14** | 71.84 |
-| PointArena | 68.33 | **75.36** | 74.13 |
-| RoboAfford | 78.65 | 84.94 | **88.14** |
-| ShareRobot (affordance) | 39.47 | 46.60 | **48.82** |
-| **Avg-7 · public benchmarks** | 65.72 | 73.68 | **75.41** |
-| RobotGrounding · in-house benchmark | 86.70 | 91.10 | **93.42** |
+| Benchmark | GPT-5.5 | GPT-5.6-sol | GPT-6 Astra | Claude Opus 5.5 | Gemini 4 Argon | ACE-Brain-0.6 |
+|:--|--:|--:|--:|--:|--:|--:|
+| Where2Place | 45.25 | 46.23 | 71.10 | 66.44 | 71.20 | **81.44** |
+| PixMo-Count | 82.61 | 83.55 | **88.10** | 83.74 | 87.71 | 86.96 |
+| RoboSpatial | 59.19 | 64.34 | 69.55 | 73.30 | **80.94** | 76.56 |
+| RefSpatial | 60.29 | 54.51 | **80.14** | 71.10 | 51.56 | 71.84 |
+| PointArena | 68.02 | 69.76 | **75.36** | 61.20 | 66.40 | 74.13 |
+| RoboAfford | 68.04 | 71.45 | 84.94 | 75.10 | 71.48 | **88.14** |
+| ShareRobot (affordance) | 38.57 | 36.66 | 46.60 | 40.20 | 29.53 | **48.82** |
+| **Avg-7 · public benchmarks** | 60.28 | 60.93 | 73.68 | 67.30 | 65.55 | **75.41** |
+| RobotGrounding · in-house benchmark | 83.96 | 85.18 | 91.10 | 90.89 | 78.51 | **93.42** |
 
 **Avg-7** is the unweighted mean of the seven public benchmark scores. **RobotGrounding is evaluated separately and is not included in Avg-7.** It contains **2,591 questions** on held-out robot manipulation frames and reports a macro average over **14 scoring groups**.
 
@@ -149,31 +141,10 @@ With the backbone and training recipe fixed, the reported Avg-7 rises from **69.
 
 Each release expands both the number of samples and the coverage of supervision. The trend therefore reflects **data scale and diversity together**; a control that adds only more samples from existing sources improves the average by less than one point.
 
-<a id="release-status"></a>
-## 🚀 Quick Start & Release Status
-
-This repository currently presents the project and its reported results. Download and runnable inference instructions will be added alongside the corresponding releases.
-
-| Resource | Status |
-|:--|:--|
-| Project overview and benchmark results | Available in this README |
-| Technical report | Link pending |
-| ACE-Brain-0.6 model weights | Link pending |
-| Installation and inference example | Pending code and checkpoint release |
-| Grounding data and evaluation resources | Release details pending |
-
-<a id="roadmap"></a>
-## 🗓️ Roadmap
-
-- [x] Publish the project overview, method figures, and reported results.
-- [ ] Add the technical report and final citation.
-- [ ] Add model checkpoints and a runnable inference example.
-- [ ] Document data and evaluation resource availability.
-
 <a id="citation"></a>
 ## 📖 Citation
 
-The technical report is titled **“ACE-Brain-0.6: Scaling Spatial Grounding for Physical Foundation Models”** by the **ACE-Brain Team**. A formal BibTeX entry will be added with the report's publication details.
+Read the [technical report (PDF)](assets/ACE_Brain_Grounding.pdf), **“ACE-Brain-0.6: Scaling Spatial Grounding for Physical Foundation Models”**, by the **ACE-Brain Team**. A formal BibTeX entry will be added when the arXiv identifier is available.
 
 <a id="acknowledgements"></a>
 ## 🙏 Acknowledgements
@@ -188,8 +159,6 @@ This project continues the [ACE-Brain](https://github.com/DAXIAORobotics/ACE-Bra
 **Contributors:** Yinhe Wang, Tao Tao, Zexin He, Shuang Luo, Wei Mao, Feng Pan, Hanming Deng, and Lewei Lu.
 
 **Advisors:** Zhi Hou, Xingang Pan, Dahua Lin, Dacheng Tao, and Xiaogang Wang.
-
-**Affiliations:** ACE Robotics · Sichuan University · Nanyang Technological University · SenseTime Research.
 
 <a id="star-history"></a>
 ## ⭐ Star History
