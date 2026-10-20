@@ -25,7 +25,10 @@
     menu.setAttribute("aria-expanded", String(open));
     menu.setAttribute("aria-label", open ? "Close section navigation" : "Open section navigation");
   });
-  navLinks.forEach(link => link.addEventListener("click", closeMenu));
+  navLinks.forEach(link => {
+    link.setAttribute("aria-label", link.textContent.trim());
+    link.addEventListener("click", closeMenu);
+  });
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && menu.getAttribute("aria-expanded") === "true") {
       closeMenu();
@@ -204,12 +207,11 @@
       const scene = element("figure", "scene"), frame = element("div", "scene-frame");
       const img = element("img");
       img.src = path;
-      img.width = 448; img.height = 448;
       img.alt = `${example.title}: ${example.images.length === 2 ? index === 0 ? "source camera with object marked in red" : "target camera" : "robot camera observation"}`;
       frame.append(img);
       // Coordinates remain in the original, uncropped image frame.
       if (index === example.images.length - 1) {
-        const overlay = svgNode("svg", { viewBox: "0 0 1000 1000", class: "scene-overlay", "aria-hidden": "true" });
+        const overlay = svgNode("svg", { viewBox: "0 0 1000 1000", preserveAspectRatio: "none", class: "scene-overlay", "aria-hidden": "true" });
         (answer.boxes || []).forEach(([x1, y1, x2, y2], i) => {
           overlay.append(svgNode("rect", { x: x1, y: y1, width: x2 - x1, height: y2 - y1, rx: 2 }));
           if ((answer.boxes || []).length > 1) {

@@ -7,7 +7,7 @@
 <p>
   <a href="https://daxiaorobotics.github.io/ACE-Brain-0.6/"><img src="https://img.shields.io/badge/Project-Page-blue" alt="Project Page"></a>
   <a href="#citation"><img src="https://img.shields.io/badge/arXiv-Pending-lightgrey" alt="arXiv: pending"></a>
-  <a href="#news"><img src="https://img.shields.io/badge/Models-Pending-lightgrey" alt="Models: pending"></a>
+  <a href="https://huggingface.co/ACERobotics/ACE-Brain-0.6-9B"><img src="https://img.shields.io/badge/Hugging_Face-ACE--Brain--0.6--9B-yellow" alt="Hugging Face: ACE-Brain-0.6-9B"></a>
   <a href="assets/ACE_Brain_Grounding.pdf"><img src="https://img.shields.io/badge/Tech_Report-PDF-3530ef" alt="Tech Report: PDF"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="Repository license: MIT"></a>
 </p>
@@ -39,7 +39,7 @@
 ## 🚀 News
 
 - **ACE-Brain-0.6** introduces spatial grounding through diverse, verifiable supervision. Explore the model overview, annotation pipeline, and reported benchmark results below.
-- The [technical report (PDF)](assets/ACE_Brain_Grounding.pdf) is available. The arXiv link, model weights, and inference code links are pending.
+- The [technical report (PDF)](assets/ACE_Brain_Grounding.pdf) and [Hugging Face model repository](https://huggingface.co/ACERobotics/ACE-Brain-0.6-9B) are available. The arXiv link and standalone inference code links are pending.
 
 <a id="introduction"></a>
 ## 🧠 Introduction
