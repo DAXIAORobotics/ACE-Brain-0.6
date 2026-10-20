@@ -5,6 +5,7 @@
 # ACE-Brain-0.6: Scaling Spatial Grounding for Physical Foundation Models
 
 <p>
+  <a href="https://daxiaorobotics.github.io/ACE-Brain-0.6/"><img src="https://img.shields.io/badge/Project-Page-blue" alt="Project Page"></a>
   <a href="#citation"><img src="https://img.shields.io/badge/arXiv-Pending-lightgrey" alt="arXiv: pending"></a>
   <a href="#news"><img src="https://img.shields.io/badge/Models-Pending-lightgrey" alt="Models: pending"></a>
   <a href="assets/ACE_Brain_Grounding.pdf"><img src="https://img.shields.io/badge/Tech_Report-PDF-3530ef" alt="Tech Report: PDF"></a>

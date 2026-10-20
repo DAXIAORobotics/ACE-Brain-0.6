@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf7ef">
+  <meta name="description" content="ACE-Brain-0.6: Scaling Spatial Grounding for Physical Foundation Models. A 9B vision-language model trained with diverse, verifiable grounding supervision.">
+  <meta property="og:title" content="ACE-Brain-0.6 — Scaling Spatial Grounding">
+  <meta property="og:description" content="From visual references to physical understanding. Explore the data pipeline, grounding benchmarks, and RobotGrounding examples.">
+  <meta property="og:type" content="website">
+  <title>ACE-Brain-0.6 | Scaling Spatial Grounding</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site-config.js" defer></script>
+  <script src="assets/data/content.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <header class="mobile-header">
+    <a class="wordmark" href="#intro">ACE-Brain <span>0.6</span></a>
+    <button id="menu-toggle" aria-expanded="false" aria-controls="section-nav" aria-label="Open section navigation">Menu <span aria-hidden="true">☰</span></button>
+  </header>
+  <nav class="section-nav" id="section-nav" aria-label="Page sections">
+    <a href="#intro" class="active" aria-current="location"><i></i><span>Intro</span></a>
+    <a href="#highlights"><i></i><span>Highlights</span></a>
+    <a href="#method"><i></i><span>Method</span></a>
+    <a href="#results"><i></i><span>Results</span></a>
+    <a href="#scaling"><i></i><span>Scaling</span></a>
+    <a href="#robotgrounding"><i></i><span>RobotGrounding</span></a>
+    <a href="#analysis"><i></i><span>Analysis</span></a>
+    <a href="#resources"><i></i><span>Resources</span></a>
+    <a href="#citation"><i></i><span>Citation</span></a>
+  </nav>
+  <main id="main">
+    <section class="hero" id="intro" aria-labelledby="hero-title">
+      <div class="eyebrow"><span class="small-star">✧</span> PERCEPTION FOR PHYSICAL INTELLIGENCE</div>
+      <h1 id="hero-title"><span class="hero-name">ACE-Brain<span class="version">-0.6</span></span><br>Scaling <span class="gold">Spatial Grounding</span><br>for Physical Foundation Models</h1>
+      <div class="team"><img src="assets/ace-logo.png" width="88" height="58" alt="ACE Robotics"><span>ACE-Brain Team</span></div>
+      <p class="authors">Yinhe Wang<sup>1,*</sup>, Tao Tao<sup>1,2,*</sup>, Zexin He<sup>1,3</sup>, Shuang Luo<sup>1,3</sup>, Wei Mao<sup>1</sup>,<br class="desktop-break"> Yao Mu<sup>5</sup>, Feng Pan<sup>1</sup>, Hanming Deng<sup>4</sup>, Lewei Lu<sup>4</sup></p>
+      <details class="author-details">
+        <summary>Advisors &amp; affiliations <span aria-hidden="true">⌄</span></summary>
+        <p>Zhi Hou<sup>1</sup>, Xingang Pan<sup>3</sup>, Dahua Lin<sup>4</sup>, Dacheng Tao<sup>3</sup>, Xiaogang Wang<sup>1</sup></p>
+        <p><sup>1</sup> ACE Robotics &nbsp; <sup>2</sup> Sichuan University &nbsp; <sup>3</sup> Nanyang Technological University<br><sup>4</sup> SenseTime Research &nbsp; <sup>5</sup> Shanghai Jiao Tong University</p>
+        <p class="muted">* Equal contribution</p>
+      </details>
+      <div class="tags"><span>9B Vision-Language Model</span><span>Verifiable Supervision</span><span>Spatial Grounding</span></div>
+      <div class="hero-actions">
+        <a class="button primary" href="#results"><span aria-hidden="true">↗</span> Explore results</a>
+        <a class="button" href="#method"><span aria-hidden="true">◈</span> The method</a>
+        <a class="button" href="#robotgrounding"><span aria-hidden="true">◎</span> Explore examples</a>
+      </div>
+      <div class="hero-wave" aria-hidden="true"><svg viewBox="0 0 1200 70" preserveAspectRatio="none"><path d="M0 40 Q250 80 550 35 T1200 30 V70 H0Z" fill="#d5aa54" opacity=".17"/><path d="M0 30 Q350 70 650 45 T1200 15 V70 H0Z" fill="#9086c6" opacity=".16"/><path d="M0 48 Q200 20 600 56 T1200 35 V70 H0Z" fill="#83a7cf" opacity=".19"/></svg></div>
+    </section>
+
+    <section class="section" id="highlights" aria-labelledby="highlights-title">
+      <div class="section-label">01 / THE IDEA</div>
+      <h2 id="highlights-title">Better grounding.<br><em>A stronger perceptual foundation.</em></h2>
+      <div class="tldr"><span>TL;DR</span><p>Can diverse, verifiable supervision bring a 9B model to frontier-level spatial grounding? <strong>ACE-Brain-0.6</strong> fine-tunes Qwen3.5-9B on approximately 1.5 million samples and exceeds GPT-6 Astra on <strong>four of seven public grounding benchmarks</strong>, with a higher average under the manuscript’s evaluation protocol.</p></div>
+      <div class="metrics">
+        <div><strong>75.41</strong><span>Public benchmark Avg-7</span><small>+9.69 points over Qwen3.5-9B</small></div>
+        <div><strong>93.42<span>%</span></strong><span>RobotGrounding macro score</span><small>14 scoring groups, held-out robot scenes</small></div>
+        <div><strong>1.54<span>M</span></strong><span>Training samples</span><small>Approximately 3.41M question–answer pairs</small></div>
+      </div>
+      <figure class="paper-figure overview">
+        <button class="figure-button" data-figure="overview" aria-label="Enlarge the ACE-Brain-0.6 overview"><img src="assets/figures/overview.png" alt="ACE-Brain-0.6 overview: four grounding capabilities, a verifiable data pipeline, and benchmark comparisons." width="1800" height="1013"></button>
+        <figcaption><span>THE BIG PICTURE</span> Diverse visual sources → verifiable grounding supervision → a stronger 9B model. <a href="assets/figures/overview.pdf" target="_blank" rel="noopener">Original figure ↗</a></figcaption>
+      </figure>
+      <div class="contributions">
+        <article><span class="number">01</span><h3>Grounding data, unified.</h3><p>Robot trajectories, egocentric interactions, and general visual data are converted into supervision with answers that can be checked against annotations.</p></article>
+        <article><span class="number">02</span><h3>Coverage that scales.</h3><p>With the backbone and training recipe fixed, successive data releases expand both sample count and the range of grounding scenarios.</p></article>
+        <article><span class="number">03</span><h3>Small model, precise targets.</h3><p>A 9B model improves on its base checkpoint across six of seven public benchmarks and leads the compared models on RobotGrounding.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="method" aria-labelledby="method-title">
+      <div class="section-label">02 / FROM RECORDINGS TO SUPERVISION</div>
+      <h2 id="method-title">Teaching a model <em>where.</em></h2>
+      <p class="section-intro">Grounding connects a language instruction to a physical scene. Our pipeline turns diverse observations into points, boxes, counts, and spatial judgments.</p>
+      <figure class="paper-figure">
+        <button class="figure-button" data-figure="pipeline" aria-label="Enlarge the annotation pipeline"><img src="assets/figures/pipeline.png" width="1800" height="841" loading="lazy" alt="Robot trajectories become keyframes, object vocabularies, spatial annotations and question-answer pairs, using Grounding DINO, SAM 3 and semantic relabeling."></button>
+        <figcaption><span>THE PIPELINE</span> Semantic relabeling corrects object names while preserving box count and geometry. <a href="assets/figures/pipeline.pdf" target="_blank" rel="noopener">Original figure ↗</a></figcaption>
+      </figure>
+      <div class="method-bottom">
+        <div><h3>One model. Five answer forms.</h3><p>Coordinates are integers normalized to [0, 1000]. A shared text interface covers target identification, complete instance coverage, spatial reasoning, and interaction grounding.</p><div class="code-chips"><code>[x, y]</code><code>[[x, y], …]</code><code>[x₁, y₁, x₂, y₂]</code><code>count</code><code>yes / no / none</code></div></div>
+        <dl class="recipe"><div><dt>Backbone</dt><dd>Qwen3.5-9B</dd></div><div><dt>Training</dt><dd>Answer-token SFT · 1 epoch</dd></div><div><dt>Vision encoder</dt><dd>Frozen</dd></div><div><dt>Sequence length</dt><dd>16,384 tokens</dd></div><div><dt>Peak learning rate</dt><dd>1 × 10⁻⁵</dd></div></dl>
+      </div>
+    </section>
+
+    <section class="section" id="results" aria-labelledby="results-title">
+      <div class="section-label">03 / THE EVIDENCE</div>
+      <h2 id="results-title">Grounding, <em>measured.</em></h2>
+      <p class="section-intro">A shared evaluation protocol across general-purpose and embodied models. Explore the public benchmarks or the held-out robot-scene evaluation.</p>
+      <div class="result-tabs" role="tablist" aria-label="Evaluation suite">
+        <button role="tab" id="tab-public" aria-controls="panel-public" aria-selected="true" tabindex="0" data-suite="public">Public benchmarks <span>7 tasks</span></button>
+        <button role="tab" id="tab-robot" aria-controls="panel-robot" aria-selected="false" tabindex="-1" data-suite="robot">RobotGrounding <span>14 groups</span></button>
+      </div>
+      <div id="panel-public" role="tabpanel" aria-labelledby="tab-public">
+        <div class="chart-head"><div><h3 id="chart-title">Seven-benchmark average</h3><p>Selected models · higher is better</p></div><label class="select-label">Compare on <select id="benchmark-select"><option value="7">Avg-7</option><option value="0">Where2Place</option><option value="1">PixMo-Count</option><option value="2">RoboSpatial</option><option value="3">RefSpatial</option><option value="4">PointArena</option><option value="5">RoboAfford</option><option value="6">ShareRobot</option></select></label></div>
+        <div id="comparison-chart" class="comparison-chart" aria-live="polite"></div>
+        <p class="chart-note" id="chart-note">Avg-7 is the unweighted mean of the seven public benchmark scores. RobotGrounding is excluded.</p>
+      </div>
+      <div id="panel-robot" role="tabpanel" aria-labelledby="tab-robot" hidden>
+        <figure class="paper-figure">
+          <button class="figure-button" data-figure="fig_capability" aria-label="Enlarge RobotGrounding capability results"><img src="assets/figures/fig_capability.png" loading="lazy" width="1800" height="664" alt="RobotGrounding overall model comparison and question-type analysis comparing ACE-Brain-0.6, Qwen3.5-9B, and GPT-6 Astra."></button>
+          <figcaption>Strong gains in recognizing absent targets; remaining gaps in multi-instance and relation-conditioned pointing. <a href="assets/figures/fig_capability.pdf" target="_blank" rel="noopener">Original figure ↗</a></figcaption>
+        </figure>
+      </div>
+      <div class="table-toolbar"><h3>Full comparison</h3><div class="filter-group" role="group" aria-label="Filter models"><button data-filter="all" aria-pressed="true">All models</button><button data-filter="open" aria-pressed="false">Open models</button><button data-filter="closed" aria-pressed="false">Closed models</button></div><a class="text-link" href="assets/data/benchmarks.csv" download>Download CSV ↓</a></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Benchmark results table. Scroll horizontally for more benchmarks."><table id="results-table"><caption>Scores reported in the supplied ACE-Brain-0.6 manuscript. Click a numeric column heading to sort.</caption><thead id="results-head"></thead><tbody id="results-body"></tbody></table></div>
+      <p class="chart-note">Bold: best score across all compared models. Scores use the displayed precision of the manuscript. Each benchmark uses its own official metric.</p>
+      <details class="protocol"><summary>Evaluation protocol &amp; remaining gaps <span aria-hidden="true">+</span></summary><p>All models use the same harness and benchmark-specific prompt, temperature 0.2, and a 128-token output budget. PixMo-Count uses 1,024 tokens. Closed models are evaluated through their APIs with the same questions and scorer.</p><p>ACE-Brain-0.6 trails Astra on PixMo-Count, RefSpatial, and PointArena. The largest gap is RefSpatial: 71.84 versus 80.14. Relative to Qwen3.5-9B, PixMo-Count decreases from 90.35 to 86.96. These grounding evaluations do not establish end-to-end robot manipulation success.</p></details>
+      <noscript><p>JavaScript enables the interactive comparisons. <a href="assets/data/benchmarks.csv">Download the complete benchmark table</a> to inspect the results.</p></noscript>
+    </section>
+
+    <section class="section" id="scaling" aria-labelledby="scaling-title">
+      <div class="section-label">04 / THE SCALING STUDY</div>
+      <h2 id="scaling-title">More coverage.<br><em>Stronger spatial perception.</em></h2>
+      <div class="scaling-layout"><div class="scaling-copy"><p>Across releases from 0.26M to 1.55M samples, the seven-benchmark average rises from 69.3 to 75.4.</p><div class="scaling-stat"><strong>+2.4</strong><span>Avg-7 points per doubling<br>over the evaluated range</span></div><p class="muted">The backbone and recipe stay fixed. Sample count and supervision coverage grow together; the main series does not isolate data volume alone.</p></div><figure class="paper-figure"><button class="figure-button" data-figure="fig_scaling_avg" aria-label="Enlarge the data scaling plot"><img src="assets/figures/fig_scaling_avg.png" loading="lazy" width="1800" height="738" alt="Avg-7 performance increases approximately linearly with log training samples, reaching 75.4 at about 1.55 million samples; correlation r equals 0.99."></button><figcaption>One full training run per data release. <a href="assets/figures/fig_scaling_avg.pdf" target="_blank" rel="noopener">Original figure ↗</a></figcaption></figure></div>
+      <aside class="insight"><span aria-hidden="true">↗</span><p><strong>Coverage matters.</strong> A control that expands only existing sources gains less than one point. Diverse supervision and answer representation contribute to the observed scaling behavior.</p></aside>
+    </section>
+
+    <section class="section" id="robotgrounding" aria-labelledby="robot-title">
+      <div class="section-label">05 / EXPLORE THE BENCHMARK</div>
+      <h2 id="robot-title">Language meets <em>the robot’s view.</em></h2>
+      <p class="section-intro">RobotGrounding contains 2,591 questions on held-out robot manipulation frames. Explore actual benchmark samples and their reference annotations.</p>
+      <div class="gallery-groups" role="group" aria-label="Example category"></div>
+      <div class="example-browser">
+        <div class="example-copy">
+          <div class="example-topline"><span class="kicker">BENCHMARK EXAMPLE</span><span id="example-position"></span></div>
+          <label for="example-select" class="visually-hidden">Choose an example</label><select id="example-select"></select>
+          <h3 id="example-title"></h3><p class="example-question" id="example-question"></p>
+          <div class="answer-block"><span id="answer-label">REFERENCE TARGET</span><code id="example-answer"></code></div>
+          <label class="overlay-toggle"><input type="checkbox" id="show-annotations" checked> Show reference annotations</label>
+          <p class="example-disclaimer">Reference annotations from the benchmark, not live model predictions.</p>
+          <div class="example-controls"><button id="example-prev" aria-label="Previous example">←</button><span>Explore 14 question types</span><button id="example-next" aria-label="Next example">→</button></div>
+        </div>
+        <div class="example-visual" id="example-visual" aria-live="polite"></div>
+      </div>
+      <div class="benchmark-facts"><div><strong>2,591</strong><span>Questions</span></div><div><strong>14</strong><span>Scoring groups</span></div><div><strong>Human</strong><span>Box annotations</span></div><div><strong>Held-out</strong><span>Robot episodes</span></div></div>
+      <details class="protocol"><summary>Benchmark composition &amp; scoring <span aria-hidden="true">+</span></summary><p>Tasks cover referring, small objects, task targets and destinations, all-instance pointing, counting, object and attribute absence, spatial judgments, and correspondence across cameras. The overall score is an unweighted mean over 14 scoring groups.</p><p>Points must fall inside the reference boxes; every-instance answers require one point per instance. Boxes are scored by intersection-over-union, while counts and categorical answers require exact matches. Box-based point evaluation can be lenient for thin or hollow objects.</p><figure class="paper-figure"><button class="figure-button" data-figure="fig_rg_stats" aria-label="Enlarge benchmark composition"><img src="assets/figures/fig_rg_stats.png" loading="lazy" alt="RobotGrounding composition across question types and robot datasets."></button></figure><a href="assets/figures/fig_rg_examples.pdf" target="_blank" rel="noopener">View all examples in the paper figure ↗</a></details>
+    </section>
+
+    <section class="section" id="analysis" aria-labelledby="analysis-title">
+      <div class="section-label">06 / THE MOTIVATION</div>
+      <h2 id="analysis-title">From visual references<br><em>to geometric action.</em></h2>
+      <p class="section-intro">The manuscript studies GPT-6 Astra as a reference for spatial perception. These cases illustrate why selecting the right visual evidence matters for physical action.</p>
+      <figure class="paper-figure"><button class="figure-button" data-figure="astra-manipulation-cases" aria-label="Enlarge Astra manipulation case studies"><img src="assets/figures/astra-manipulation-cases.png" loading="lazy" alt="Astra case studies of fruit basket placement and T-shirt folding, showing visual references, geometric calculations, execution and outcomes."></button><figcaption><span>ASTRA CASE STUDIES</span> Basket-rim points inform placement; a garment contour informs a square fold. These are Astra observations, not ACE-Brain-0.6 manipulation results. <a href="assets/figures/astra-manipulation-cases.pdf" target="_blank" rel="noopener">Original figure ↗</a></figcaption></figure>
+      <details class="protocol"><summary>Grounding strengths &amp; failure cases <span aria-hidden="true">+</span></summary><p>Astra handles diverse object, ordinal, multi-instance, spatial, and functional queries. Fine boundaries and spatially constrained placement remain difficult: a point can be near the correct part yet outside the valid region.</p><figure class="paper-figure"><button class="figure-button" data-figure="Astra-Grounding-Capabilities" aria-label="Enlarge Astra grounding capabilities"><img src="assets/figures/Astra-Grounding-Capabilities.png" loading="lazy" alt="Eight examples of Astra grounding strengths and two localization failures. Magenta points are predictions, cyan regions are references."></button></figure></details>
+    </section>
+
+    <section class="section" id="resources" aria-labelledby="resources-title">
+      <div class="section-label">07 / PROJECT RESOURCES</div>
+      <h2 id="resources-title">Explore <em>the work.</em></h2>
+      <div class="resources-grid" id="resource-links">
+        <div class="resource" data-resource="paper"><span class="resource-symbol" aria-hidden="true">↗</span><h3>Paper</h3><p>Technical report and methodology</p><span class="resource-status">Release link to follow</span></div>
+        <div class="resource" data-resource="code"><span class="resource-symbol" aria-hidden="true">⌘</span><h3>Code</h3><p>Project repository and updates</p><span class="resource-status">Release link to follow</span></div>
+        <div class="resource" data-resource="model"><span class="resource-symbol" aria-hidden="true">◈</span><h3>Model</h3><p>ACE-Brain-0.6-9B model repository</p><span class="resource-status">Release link to follow</span></div>
+        <div class="resource" data-resource="dataset"><span class="resource-symbol" aria-hidden="true">▤</span><h3>Data</h3><p>Grounding data and benchmark</p><span class="resource-status">Release link to follow</span></div>
+      </div>
+    </section>
+    <section class="section citation-section" id="citation" aria-labelledby="citation-title">
+      <div class="section-label">08 / CITATION</div>
+      <div class="citation-heading"><h2 id="citation-title">Build on <em>this work.</em></h2><button id="copy-citation" class="button">Copy BibTeX <span aria-hidden="true">⧉</span></button></div>
+      <p class="muted">Manuscript citation. Publication metadata will be updated upon release.</p>
+      <pre><code id="bibtex">@misc{acebrain2026grounding,
+  title  = {ACE-Brain-0.6: Scaling Spatial Grounding
+            for Physical Foundation Models},
+  author = {{ACE-Brain Team}},
+  year   = {2026},
+  note   = {Manuscript}
+}</code></pre>
+      <p id="copy-status" role="status" class="copy-status"></p>
+    </section>
+    <footer><a class="wordmark" href="#intro">ACE-Brain <span>0.6</span></a><p>Spatial perception for physical intelligence.</p><small>Design inspired by <a href="https://embodied-r.github.io/" target="_blank" rel="noopener">Embodied-R1.5</a>. Content and figures from the ACE-Brain-0.6 manuscript.</small><a class="back-top" href="#intro">Back to top ↑</a></footer>
+  </main>
+  <dialog id="figure-dialog" aria-labelledby="dialog-title"><div class="dialog-bar"><h2 id="dialog-title">Paper figure</h2><a id="dialog-original" target="_blank" rel="noopener">Original PDF ↗</a><button id="dialog-close" aria-label="Close enlarged figure">×</button></div><div class="dialog-image"><img id="dialog-img" alt=""></div></dialog>
+</body>
+</html>
