@@ -29,7 +29,7 @@ for example in content["examples"]:
     encoding="utf-8",
 )
 with (DATA / "benchmarks.csv").open("w", newline="", encoding="utf-8") as stream:
-    writer = csv.writer(stream)
+    writer = csv.writer(stream, lineterminator="\n")
     writer.writerow(["Model", "Group"] + content["benchmarks"])
     for model in content["models"]:
         writer.writerow([model["name"], model["group"]] + model["scores"])
