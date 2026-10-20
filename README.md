@@ -168,7 +168,7 @@ This project continues the [ACE-Brain](https://github.com/DAXIAORobotics/ACE-Bra
 <summary><b>View the repository's star history</b></summary>
 
 <a href="https://www.star-history.com/#DAXIAORobotics/ACE-Brain-0.6&type=date">
-  <img src="https://api.star-history.com/svg?repos=DAXIAORobotics/ACE-Brain-0.6&amp;type=date" width="100%" alt="Star history for DAXIAORobotics/ACE-Brain-0.6">
+  <img src="https://api.star-history.com/svg?repos=DAXIAORobotics/ACE-Brain-0.6&amp;type=Date" width="100%" alt="Star history for DAXIAORobotics/ACE-Brain-0.6">
 </a>
 
 </details>
