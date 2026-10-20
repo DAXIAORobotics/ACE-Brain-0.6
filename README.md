@@ -9,7 +9,7 @@
   <a href="#citation"><img src="https://img.shields.io/badge/arXiv-Pending-lightgrey" alt="arXiv: pending"></a>
   <a href="https://huggingface.co/ACERobotics/ACE-Brain-0.6-9B"><img src="https://img.shields.io/badge/Hugging_Face-ACE--Brain--0.6--9B-yellow" alt="Hugging Face: ACE-Brain-0.6-9B"></a>
   <a href="assets/ACE_Brain_Grounding.pdf"><img src="https://img.shields.io/badge/Tech_Report-PDF-3530ef" alt="Tech Report: PDF"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="Repository license: MIT"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-green.svg" alt="Repository license: Apache 2.0"></a>
 </p>
 
 [Introduction](#introduction) · [Method](#method-architecture) · [Results](#performance-highlights) · [Tech Report](assets/ACE_Brain_Grounding.pdf)
