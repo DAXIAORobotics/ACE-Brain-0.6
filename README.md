@@ -6,13 +6,13 @@
 
 <p>
   <a href="https://daxiaorobotics.github.io/ACE-Brain-0.6/"><img src="https://img.shields.io/badge/Project-Page-blue" alt="Project Page"></a>
-  <a href="#citation"><img src="https://img.shields.io/badge/arXiv-Pending-lightgrey" alt="arXiv: pending"></a>
+  <a href="https://arxiv.org/abs/2610.27040"><img src="https://img.shields.io/badge/arXiv-2610.27040-b31b1b.svg" alt="arXiv: 2610.27040"></a>
   <a href="https://huggingface.co/ACERobotics/ACE-Brain-0.6-9B"><img src="https://img.shields.io/badge/Hugging_Face-ACE--Brain--0.6--9B-yellow" alt="Hugging Face: ACE-Brain-0.6-9B"></a>
-  <a href="assets/ACE_Brain_Grounding.pdf"><img src="https://img.shields.io/badge/Tech_Report-PDF-3530ef" alt="Tech Report: PDF"></a>
+  <a href="https://arxiv.org/pdf/2610.27040"><img src="https://img.shields.io/badge/Tech_Report-PDF-3530ef" alt="Tech Report: PDF"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-green.svg" alt="Repository license: Apache 2.0"></a>
 </p>
 
-[Introduction](#introduction) · [Method](#method-architecture) · [Results](#performance-highlights) · [Tech Report](assets/ACE_Brain_Grounding.pdf)
+[Introduction](#introduction) · [Method](#method-architecture) · [Results](#performance-highlights) · [Tech Report](https://arxiv.org/pdf/2610.27040)
 
 </div>
 
@@ -39,7 +39,7 @@
 ## 🚀 News
 
 - **ACE-Brain-0.6** introduces spatial grounding through diverse, verifiable supervision. Explore the model overview, annotation pipeline, and reported benchmark results below.
-- The [technical report (PDF)](assets/ACE_Brain_Grounding.pdf) and [Hugging Face model repository](https://huggingface.co/ACERobotics/ACE-Brain-0.6-9B) are available. The arXiv link and standalone inference code links are pending.
+- The [technical report (PDF)](https://arxiv.org/pdf/2610.27040) and [Hugging Face model repository](https://huggingface.co/ACERobotics/ACE-Brain-0.6-9B) are available. Standalone inference code links are pending.
 
 <a id="introduction"></a>
 ## 🧠 Introduction
@@ -89,7 +89,7 @@ Coordinates are integers normalized to **[0, 1000]** along each image axis. Free
 <a id="performance-highlights"></a>
 ## 📊 Performance Highlights
 
-The following results compare ACE-Brain-0.6 with GPT, Claude Opus, and Gemini models under the shared evaluation protocol in the [technical report](assets/ACE_Brain_Grounding.pdf). Higher is better; bold marks the best score among the models shown.
+The following results compare ACE-Brain-0.6 with GPT, Claude Opus, and Gemini models under the shared evaluation protocol in the [technical report](https://arxiv.org/pdf/2610.27040). Higher is better; bold marks the best score among the models shown.
 
 | Benchmark | GPT-5.5 | GPT-5.6-sol | GPT-6 Astra | Claude Opus 5.5 | Gemini 4 Argon | ACE-Brain-0.6 |
 |:--|--:|--:|--:|--:|--:|--:|
@@ -145,7 +145,21 @@ Each release expands both the number of samples and the coverage of supervision.
 <a id="citation"></a>
 ## 📖 Citation
 
-Read the [technical report (PDF)](assets/ACE_Brain_Grounding.pdf), **“ACE-Brain-0.6: Scaling Spatial Grounding for Physical Foundation Models”**, by the **ACE-Brain Team**. A formal BibTeX entry will be added when the arXiv identifier is available.
+If you find ACE-Brain-0.6 useful, please cite our [arXiv paper](https://arxiv.org/abs/2610.27040):
+
+```bibtex
+@misc{wang2026acebrain06scalingspatialgrounding,
+      title={ACE-Brain-0.6: Scaling Spatial Grounding for Physical Foundation Models},
+      author={Yinhe Wang and Tao Tao and Zexin He and Shuang Luo and Wei Mao and Yao Mu and
+              Feng Pan and Hanming Deng and Lewei Lu and Zhi Hou and Xingang Pan and Dahua Lin and
+              Dacheng Tao and Xiaogang Wang},
+      year={2026},
+      eprint={2610.27040},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2610.27040},
+}
+```
 
 <a id="acknowledgements"></a>
 ## 🙏 Acknowledgements
